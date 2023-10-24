@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id ("kotlin-parcelize")
 }
 
 android {
@@ -30,8 +31,20 @@ android {
     kotlinOptions {
         jvmTarget = ConfigData.jvmTarget
     }
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = Versions.kotlinComposeCompilerVersion
+    }
 }
 
 dependencies {
-
+    implementation(Dependencies.AndroidX.coreKtx)
+    implementation(Dependencies.AndroidX.appCompat)
+    implementation(Dependencies.DaggerHiltLib.Android)
+    implementation(Dependencies.ComposeLib.Activity)
+    implementation(Dependencies.ComposeLib.Ui)
+    implementation(Dependencies.ComposeLib.Preview)
+    implementation(Dependencies.ComposeLib.Material)
 }

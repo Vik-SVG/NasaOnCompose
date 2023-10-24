@@ -8,5 +8,6 @@ object Versions {
     const val kotlinVersion = "1.9.10"
     const val hiltVersion = "2.48"
     const val composeUiVersion = "1.5.4"
+    const val kotlinComposeCompilerVersion = "1.5.3"
 
 }

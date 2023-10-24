@@ -1,10 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Base application theme. -->
 
-
-    <style name="Theme.NasaOnCompose" parent="android:Theme.Material.Light.NoActionBar" >
+    <style name="Theme.NasaOnCompose" parent="android:Theme.Material.Light.NoActionBar">
         <item name="android:statusBarColor">@color/black</item>
         <item name="android:windowBackground">@color/black</item>
         <item name="android:colorBackground">@color/black</item>
+        <item name="android:windowSplashScreenBackground">@color/black</item>
     </style>
 </resources>

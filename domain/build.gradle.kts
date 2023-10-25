@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    kotlin("kapt")
 }
 
 android {
@@ -34,4 +35,8 @@ android {
 
 dependencies {
 
+    implementation(project(":data"))
+
+    implementation(Dependencies.DaggerHiltLib.Android)
+    kapt(Dependencies.DaggerHiltLib.Compiler)
 }

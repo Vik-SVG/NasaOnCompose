@@ -1,4 +1,4 @@
-package com.priesniakov.nasaoncompose.ui.components
+package com.priesniakov.core.ui.components
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
@@ -29,15 +29,15 @@ import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.priesniakov.core.theme.Black
-import com.priesniakov.core.theme.Mercury2
-import com.priesniakov.core.theme.TextAppBar
-import com.priesniakov.core.theme.Vermilion
-import com.priesniakov.core.theme.TabFadeInAnimationDelay
-import com.priesniakov.core.theme.TabFadeInAnimationDuration
-import com.priesniakov.core.theme.TabFadeOutAnimationDuration
-import com.priesniakov.nasaoncompose.navigation.Screen
-import com.priesniakov.nasaoncompose.navigation.rootScreenIcons
+import com.priesniakov.core.navigation.BottomRouteScreen
+import com.priesniakov.core.navigation.RouteScreen
+import com.priesniakov.core.ui.theme.Black
+import com.priesniakov.core.ui.theme.Mercury2
+import com.priesniakov.core.ui.theme.TextAppBar
+import com.priesniakov.core.ui.theme.Vermilion
+import com.priesniakov.core.ui.theme.TabFadeInAnimationDelay
+import com.priesniakov.core.ui.theme.TabFadeInAnimationDuration
+import com.priesniakov.core.ui.theme.TabFadeOutAnimationDuration
 
 @Composable
 fun NasaAppBar(title: String) {
@@ -55,7 +55,11 @@ fun NasaAppBar(title: String) {
 }
 
 @Composable
-fun NasaBottomBar(currentScreen: Screen, allScreens: List<Screen>, onSelected: (Screen) -> Unit) {
+fun <T : BottomRouteScreen, R : RouteScreen> NasaBottomBar(
+    currentScreen: R,
+    allScreens: List<T>,
+    onSelected: (T) -> Unit
+) {
     Surface(
         modifier = Modifier
             .fillMaxWidth(),
@@ -74,7 +78,11 @@ fun NasaBottomBar(currentScreen: Screen, allScreens: List<Screen>, onSelected: (
 
 
 @Composable
-fun SimpleTab(screen: Screen, currentScreen: Screen, onSelected: (Screen) -> Unit) {
+fun <T : BottomRouteScreen, R : RouteScreen> SimpleTab(
+    screen: T,
+    currentScreen: R,
+    onSelected: (T) -> Unit
+) {
     val selected = screen == currentScreen
 
     val tabBackgroundColor = Vermilion
@@ -110,7 +118,7 @@ fun SimpleTab(screen: Screen, currentScreen: Screen, onSelected: (Screen) -> Uni
                 )
             )
             .clearAndSetSemantics { contentDescription = "" },
-        painter = painterResource(id = rootScreenIcons.getValue(screen.route)),
+        painter = painterResource(id = screen.getIconRes()),
         contentDescription = "", tint = iconTintColor
     )
 }

@@ -1,4 +1,4 @@
-package com.priesniakov.core.theme
+package com.priesniakov.core.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

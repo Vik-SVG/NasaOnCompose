@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    kotlin("kapt")
 }
 
 android {
@@ -33,5 +34,16 @@ android {
 }
 
 dependencies {
+
+    implementation(Dependencies.NetworkLib.Retrofit)
+    implementation(Dependencies.NetworkLib.RetrofitGson)
+    implementation(Dependencies.NetworkLib.Okhttp)
+
+    kapt(Dependencies.StorageLib.RoomCompiler)
+    implementation(Dependencies.StorageLib.RoomRuntime)
+    implementation(Dependencies.StorageLib.RoomKtx)
+
+    implementation(Dependencies.DaggerHiltLib.Android)
+    kapt(Dependencies.DaggerHiltLib.Compiler)
 
 }

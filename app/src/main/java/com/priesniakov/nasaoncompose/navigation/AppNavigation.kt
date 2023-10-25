@@ -3,32 +3,42 @@ package com.priesniakov.nasaoncompose.navigation
 import android.os.Parcelable
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.priesniakov.core.navigation.BottomRouteScreen
+import com.priesniakov.core.navigation.RouteScreen
 import com.priesniakov.nasaoncompose.R
 import kotlinx.parcelize.Parcelize
 
 
-sealed class Screen(val title: String, val route: String) : Parcelable
+sealed class AppScreen(override val title: String, override val route: String) : Parcelable,
+    RouteScreen
 
 @Parcelize
-object HomeScreen : Screen("NASA On Compose", "home_screen"), Parcelable
+object HomeScreen : AppScreen("NASA On Compose", "home_screen"), Parcelable
 
 @Parcelize
-object ApodScreen : Screen("APOD", "apod_screen"), Parcelable
+object ApodScreen : AppScreen("APOD", "apod_screen"), Parcelable, BottomRouteScreen {
+    override fun getIconRes(): Int = rootScreenIcons.getValue(route)
+}
 
 @Parcelize
-object AstronomersScreen : Screen("Astronomers", "astronomers_screen"), Parcelable
+object AstronomersScreen : AppScreen("Astronomers", "astronomers_screen"), Parcelable,
+    BottomRouteScreen {
+    override fun getIconRes(): Int = rootScreenIcons.getValue(route)
+}
 
 @Parcelize
-object MarsRoverScreen : Screen("Mars Rover", "mars_rover_screen"), Parcelable
+object MarsRoverScreen : AppScreen("Mars Rover", "mars_rover_screen"), Parcelable,
+    BottomRouteScreen {
+    override fun getIconRes(): Int = rootScreenIcons.getValue(route)
+}
 
 //val appScreens = listOf(HomeScreen, ApodScreen, AstronomersScreen, MarsRoverScreen)
 
 val appRootScreens =
-    listOf(ApodScreen, AstronomersScreen, MarsRoverScreen)
+    listOf<BottomRouteScreen>(ApodScreen, AstronomersScreen, MarsRoverScreen)
 
 val rootScreenIcons = mapOf(
     ApodScreen.route to R.drawable.apod_24,
@@ -36,17 +46,6 @@ val rootScreenIcons = mapOf(
     MarsRoverScreen.route to R.drawable.rover_24,
 )
 
-
-fun NavHostController.navigateSingleTopTo(route: String) =
-    this.navigate(route) {
-        popUpTo(
-            this@navigateSingleTopTo.graph.findStartDestination().id
-        ) {
-            saveState = true
-        }
-        launchSingleTop = true
-        restoreState = true
-    }
 
 @Composable
 fun AppNavHost(

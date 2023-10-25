@@ -15,14 +15,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.priesniakov.core.theme.Black
-import com.priesniakov.core.theme.NasaOnComposeTheme
+import com.priesniakov.core.ui.theme.Black
+import com.priesniakov.core.ui.theme.NasaOnComposeTheme
 import com.priesniakov.nasaoncompose.navigation.AppNavHost
 import com.priesniakov.nasaoncompose.navigation.HomeScreen
 import com.priesniakov.nasaoncompose.navigation.appRootScreens
-import com.priesniakov.nasaoncompose.navigation.navigateSingleTopTo
-import com.priesniakov.nasaoncompose.ui.components.NasaAppBar
-import com.priesniakov.nasaoncompose.ui.components.NasaBottomBar
+import com.priesniakov.core.ui.components.NasaAppBar
+import com.priesniakov.core.ui.components.NasaBottomBar
+import com.priesniakov.core.navigation.navigateSingleTopTo
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

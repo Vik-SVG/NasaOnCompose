@@ -47,4 +47,8 @@ dependencies {
     implementation(Dependencies.ComposeLib.Ui)
     implementation(Dependencies.ComposeLib.Preview)
     implementation(Dependencies.ComposeLib.Material)
+    implementation(Dependencies.NavigationLib.Navigation)
+    implementation(Dependencies.NetworkLib.RetrofitGson)
+    implementation(Dependencies.NetworkLib.Okhttp)
+    implementation(Dependencies.NetworkLib.LoggingInterceptor)
 }

@@ -1,4 +1,4 @@
-package com.priesniakov.core.theme
+package com.priesniakov.core.ui.theme
 
 const val TabFadeInAnimationDuration = 150
 const val TabFadeInAnimationDelay = 100

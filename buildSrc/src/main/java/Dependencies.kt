@@ -66,17 +66,18 @@ object Dependencies {
         const val MoshiLazyAdapter = "com.serjltt.moshi:moshi-lazy-adapters:2.2"
         const val Retrofit = "com.squareup.retrofit2:retrofit:2.9.0"
         const val RetrofitMoshi = "com.squareup.retrofit2:converter-moshi:2.9.0"
-        const val Okhttp = "com.squareup.okhttp3:okhttp:5.0.0-alpha.6"
-        const val LoggingInterceptor = "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.6"
-
+        const val RetrofitGson = "com.squareup.retrofit2:converter-gson:2.9.0"
+        const val Okhttp = "com.squareup.okhttp3:okhttp:4.11.0"
+        const val LoggingInterceptor = "com.squareup.okhttp3:logging-interceptor:4.11.0"
         const val KotlinXSerialization = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2"
         const val KotlinXSerializationRetrofit =
             "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0"
     }
 
     object StorageLib {
-        const val RoomKtx = "androidx.room:room-ktx:2.4.2"
-        const val RoomCompiler = "androidx.room:room-compiler:2.4.2"
+        const val RoomKtx = "androidx.room:room-ktx:2.6.0"
+        const val RoomRuntime = "androidx.room:room-runtime:2.6.0"
+        const val RoomCompiler = "androidx.room:room-compiler:2.6.0"
         const val DatastorePref = "androidx.datastore:datastore-preferences:1.0.0"
         const val Datastore = "androidx.datastore:datastore:1.0.0"
         const val SecurityPref = "androidx.security:security-crypto-ktx:1.1.0-alpha03"

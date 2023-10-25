@@ -3,7 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     kotlin("kapt")
     id("com.google.dagger.hilt.android")
-    id ("kotlin-parcelize")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -18,6 +18,8 @@ android {
         versionName = ConfigData.versionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "BASE_URL", "\"https://api.nasa.gov\"")
+        buildConfigField("String", "API_KEY", "\"API_KEY\"")         //TODO add api key here
     }
 
     buildTypes {
@@ -38,6 +40,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = Versions.kotlinComposeCompilerVersion
@@ -46,6 +49,8 @@ android {
 
 dependencies {
     implementation(project(":core"))
+    implementation(project(":domain"))
+    implementation(project(":data"))
 
     implementation(Dependencies.AndroidX.coreKtx)
     implementation(Dependencies.AndroidX.appCompat)
@@ -56,6 +61,16 @@ dependencies {
     implementation(Dependencies.ComposeLib.Preview)
     implementation(Dependencies.ComposeLib.Material)
     implementation(Dependencies.NavigationLib.Navigation)
+
+    implementation(Dependencies.NetworkLib.Retrofit)
+    implementation(Dependencies.NetworkLib.RetrofitGson)
+    implementation(Dependencies.NetworkLib.RetrofitMoshi)
+    implementation(Dependencies.NetworkLib.Okhttp)
+    implementation(Dependencies.NetworkLib.LoggingInterceptor)
+
+    kapt(Dependencies.StorageLib.RoomCompiler)
+    implementation(Dependencies.StorageLib.RoomRuntime)
+    implementation(Dependencies.StorageLib.RoomKtx)
 
     kapt(Dependencies.DaggerHiltLib.Compiler)
     testImplementation(Dependencies.Test.jUnit)

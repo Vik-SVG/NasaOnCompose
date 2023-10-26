@@ -1,5 +1,6 @@
 package com.priesniakov.nasaoncompose.di
 
+import com.google.gson.GsonBuilder
 import com.priesniakov.core.network.DefaultInterceptor
 import com.priesniakov.data.datasource.api.NasaService
 import com.priesniakov.nasaoncompose.BuildConfig
@@ -10,7 +11,7 @@ import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
@@ -25,7 +26,7 @@ class NetworkModule {
         Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL)
             .client(okHttpClient)
-            .addConverterFactory(MoshiConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
             .build()
 
 

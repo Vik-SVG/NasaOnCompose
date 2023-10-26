@@ -1,6 +1,7 @@
 package com.priesniakov.core.ui.theme
 
 import androidx.compose.material.Typography
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -33,12 +34,12 @@ val Typography = Typography(
 //    fontSize = 16.sp
 //)
 
-//val TextSecondary = TextStyle(
-//    fontFamily = FontFamily.Default,
-//    fontWeight = FontWeight.Normal,
-//    color = Grey,
-//    fontSize = 12.sp
-//)
+val TextSecondary = TextStyle(
+    fontFamily = FontFamily.Default,
+    fontWeight = FontWeight.Normal,
+    color = Color.White,
+    fontSize = 12.sp
+)
 
 //val TextTitle = TextStyle(
 //    fontFamily = FontFamily.Default,

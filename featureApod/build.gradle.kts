@@ -24,6 +24,12 @@ android {
             )
         }
     }
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = Versions.kotlinComposeCompilerVersion
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -35,9 +41,22 @@ android {
 
 dependencies {
 
-    implementation(project(":data"))
+    implementation(project(":domain"))
     implementation(project(":core"))
+    implementation(project(":data"))
 
+    implementation(Dependencies.AndroidX.coreKtx)
     implementation(Dependencies.DaggerHiltLib.Android)
+    implementation(Dependencies.ComposeLib.Activity)
+    implementation(Dependencies.ComposeLib.ViewModel)
+    implementation(Dependencies.ComposeLib.Ui)
+    implementation(Dependencies.ComposeLib.Preview)
+    implementation(Dependencies.ComposeLib.Material)
+    implementation(Dependencies.NavigationLib.Navigation)
+    implementation(Dependencies.DaggerHiltLib.Android)
+    implementation(Dependencies.DaggerHiltLib.Compose)
+    implementation(Dependencies.AccompanistLib.Swiperefresh)
+    implementation(Dependencies.ComposeLib.Coil)
     kapt(Dependencies.DaggerHiltLib.Compiler)
+
 }

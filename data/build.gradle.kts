@@ -35,6 +35,8 @@ android {
 
 dependencies {
 
+    implementation(project(":core"))
+
     implementation(Dependencies.NetworkLib.Retrofit)
     implementation(Dependencies.NetworkLib.RetrofitGson)
     implementation(Dependencies.NetworkLib.Okhttp)

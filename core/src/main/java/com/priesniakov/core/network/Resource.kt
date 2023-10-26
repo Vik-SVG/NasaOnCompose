@@ -1,4 +1,4 @@
-package com.priesniakov.data.model.core
+package com.priesniakov.core.network
 
 sealed class Resource<out T> {
     data class Success<out T : Any>(val data: T) : Resource<T>()

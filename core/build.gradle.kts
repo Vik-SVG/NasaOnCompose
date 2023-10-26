@@ -41,7 +41,6 @@ android {
 
 dependencies {
     implementation(Dependencies.AndroidX.coreKtx)
-    implementation(Dependencies.AndroidX.appCompat)
     implementation(Dependencies.DaggerHiltLib.Android)
     implementation(Dependencies.ComposeLib.Activity)
     implementation(Dependencies.ComposeLib.Ui)

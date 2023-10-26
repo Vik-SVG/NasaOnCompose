@@ -1,6 +1,5 @@
 package com.priesniakov.data.datasource
 
-import com.priesniakov.data.datasource.core.BaseDataSource
 import com.priesniakov.data.model.Astronomy
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -12,7 +11,7 @@ interface NasaCacheDataSource {
 
 
 @Singleton
-class NasaCacheDataSourceImpl @Inject constructor() : BaseDataSource(), NasaCacheDataSource {
+class NasaCacheDataSourceImpl @Inject constructor() : NasaCacheDataSource {
 
     private var astronomyList = ArrayList<Astronomy>()
     override fun saveAstronomyDataToCache(newAstronomyData: List<Astronomy>) {

@@ -5,7 +5,7 @@ import com.priesniakov.data.datasource.NasaCacheDataSource
 import com.priesniakov.data.datasource.NasaLocalDataSource
 import com.priesniakov.data.datasource.NasaRemoteDataSource
 import com.priesniakov.data.model.Astronomy
-import com.priesniakov.data.model.core.Resource
+import com.priesniakov.core.network.Resource
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -38,7 +38,7 @@ class ApodRepositoryImpl @Inject constructor(
         return nasaRemoteDataSource.getAstronomyDataFromRemote()
     }
 
-    private suspend fun getAstronomyDataFromDB(): List<Astronomy> {
+    private suspend fun getAstronomyDataFromDB(): Resource<List<Astronomy>> {
 
         var astronomyList: List<Astronomy> = listOf()
         try {
@@ -50,17 +50,15 @@ class ApodRepositoryImpl @Inject constructor(
             Log.e(TAG, e.message.toString())
         }
 
-        if (astronomyList.isNotEmpty()) {
-            return astronomyList
+        return if (astronomyList.isNotEmpty()) {
+            return Resource.Success(astronomyList)
         } else {
             val apiCall = getAstronomyDataFromAPI()
             if (apiCall is Resource.Success) {
-                astronomyList = apiCall.data
                 nasaLocalDataSource.saveAstronomyDataToLocal(astronomyList)
             }
+            apiCall
         }
-
-        return astronomyList
     }
 
     private suspend fun getAstronomyDataFromCache(): Resource<List<Astronomy>> {
@@ -72,13 +70,15 @@ class ApodRepositoryImpl @Inject constructor(
             Log.e(TAG, e.message.toString())
         }
 
-        if (astronomyList.isNotEmpty()) {
+        return if (astronomyList.isNotEmpty()) {
             return Resource.Success(astronomyList)
         } else {
-            astronomyList = getAstronomyDataFromDB()
-            astronomyCacheDataSource.saveAstronomyDataToCache(astronomyList)
+            val astronomyData = getAstronomyDataFromDB()
+            if (astronomyData is Resource.Success && astronomyData.data.isNotEmpty()) {
+                astronomyCacheDataSource.saveAstronomyDataToCache(astronomyData.data)
+            }
+            astronomyData
         }
-        return Resource.Success(astronomyList)
     }
 
     companion object {

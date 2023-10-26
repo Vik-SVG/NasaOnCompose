@@ -8,6 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.priesniakov.core.navigation.BottomRouteScreen
 import com.priesniakov.core.navigation.RouteScreen
+import com.priesniakov.featureapod.ui.ApodComposableScreen
 import com.priesniakov.nasaoncompose.R
 import kotlinx.parcelize.Parcelize
 
@@ -60,6 +61,7 @@ fun AppNavHost(
         composable(route = HomeScreen.route) {
         }
         composable(route = ApodScreen.route) {
+            ApodComposableScreen()
         }
         composable(route = AstronomersScreen.route) {
         }

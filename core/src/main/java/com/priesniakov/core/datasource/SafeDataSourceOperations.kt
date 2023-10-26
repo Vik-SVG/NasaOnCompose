@@ -1,11 +1,11 @@
-package com.priesniakov.data.datasource.core
+package com.priesniakov.core.datasource
 
 import android.util.Log
-import com.priesniakov.data.model.core.Resource
+import com.priesniakov.core.network.Resource
 import retrofit2.Response
 
-abstract class BaseDataSource {
-    protected suspend fun <T> getResultsFromRemote(call: suspend () -> Response<T>): Resource<T> {
+class SafeDataSourceOperations : DataSourceOperations {
+    override suspend fun <T> getResultsFromRemote(call: suspend () -> Response<T>): Resource<T> {
         try {
             val response = call.invoke()
             if (response.isSuccessful) {
@@ -19,7 +19,7 @@ abstract class BaseDataSource {
         }
     }
 
-    protected suspend fun performSingleAction(call: suspend () -> Unit): Resource<Boolean> {
+    override suspend fun performSingleAction(call: suspend () -> Unit): Resource<Boolean> {
         return try {
             call.invoke()
             Resource.Success(true)
@@ -28,7 +28,7 @@ abstract class BaseDataSource {
         }
     }
 
-    protected suspend fun <T> performSingleActionWithResult(call: suspend () -> T): Resource<T> {
+    override suspend fun <T> performSingleActionWithResult(call: suspend () -> T): Resource<T> {
         return try {
             val result = call.invoke()
             if (result != null) {

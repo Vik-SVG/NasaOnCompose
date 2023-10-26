@@ -51,9 +51,9 @@ dependencies {
     implementation(project(":core"))
     implementation(project(":domain"))
     implementation(project(":data"))
+    implementation(project(":featureApod"))
 
     implementation(Dependencies.AndroidX.coreKtx)
-    implementation(Dependencies.AndroidX.appCompat)
     implementation(Dependencies.DaggerHiltLib.Android)
     implementation(Dependencies.ComposeLib.Activity)
     implementation(Dependencies.ComposeLib.ViewModel)

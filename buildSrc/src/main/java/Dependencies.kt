@@ -3,7 +3,6 @@ object Dependencies {
     object AndroidX {
 
         const val coreKtx = "androidx.core:core-ktx:${Versions.coreKtxVersion}"
-        const val appCompat = "androidx.core:core-ktx:${Versions.appCompatVersion}"
 
     }
 
@@ -30,6 +29,7 @@ object Dependencies {
         const val Manifest = "androidx.compose.ui:ui-test-manifest:1.1.1"
 
         const val Activity = "androidx.activity:activity-compose:1.8.0"
+        const val ActivityKtx = "androidx.activity:activity-ktx:1.8.0"
         const val ViewModel = "androidx.lifecycle:lifecycle-viewmodel-compose:2.4.1"
         const val ConstraintLayout = "androidx.constraintlayout:constraintlayout-compose:1.0.0"
         const val Lottie = "com.airbnb.android:lottie-compose:5.0.3"
